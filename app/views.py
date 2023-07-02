@@ -17,7 +17,7 @@ def get_favourite_books():
     for book in favourite_books:
         responce = requests.get(BOOKS_API + book + '.json').json()
         book = Book(
-            key=responce.get('key'),
+            key=responce.get('key')[7:],
             title=responce.get('title'),
             number_of_pages=responce.get('number_of_pages')
         )
@@ -26,7 +26,7 @@ def get_favourite_books():
         for author in responce.get('authors'):
             author = requests.get(OPEN_LIBRARY + author.get('key') + '.json').json()
             author = Author(
-                key=author.get('key'),
+                key=author.get('key')[9:],
                 personal_name=author.get('personal_name'),
                 top_work=author.get('top_work')
             )
@@ -37,9 +37,9 @@ def get_favourite_books():
         for work in responce.get('works'):
             work = requests.get(OPEN_LIBRARY + work.get('key') + '.json').json()
             work = Work(
-                key=work.get('key'),
+                key=work.get('key')[7:],
                 title=work.get('title'),
-                book_key=responce.get('key')
+                book_key=responce.get('key')[7:]
             )
             db.session.add(work)
             db.session.commit()
