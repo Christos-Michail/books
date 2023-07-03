@@ -33,7 +33,6 @@ def get_favourite_books():
             author.books.append(book)
             db.session.add(author)
             db.session.commit()
-
         for work in responce.get('works'):
             work = requests.get(OPEN_LIBRARY + work.get('key') + '.json').json()
             work = Work(
