@@ -5,6 +5,7 @@ books = db.Table('book_author',
     db.Column('book_key', db.Integer, db.ForeignKey('books.key'), primary_key=True)
 )
 
+
 class Author(db.Model):
     __tablename__ = 'authors'
     key = db.Column(db.String(50), primary_key=True)
@@ -22,7 +23,7 @@ class Author(db.Model):
 
 class Book(db.Model):
     __tablename__ = 'books'
-    key = db.Column(db.String(50), primary_key=True)  #"/books/OL23415912M"
+    key = db.Column(db.String(50), primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     number_of_pages = db.Column(db.Integer)
     works = db.relationship('Work', backref='books', lazy='dynamic')
