@@ -1,0 +1,4 @@
+1)I didn't have docker on my laptop so used vent
+2)I didn't create the Work-Authors relation as I don't need it
+3)on the CRUD of the books API I could have also added authors (check if their inside if not create) but I didn't find it necessary for this exercise
+3)I didn't use try except blocks
